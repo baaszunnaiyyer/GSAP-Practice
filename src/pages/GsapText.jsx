@@ -1,10 +1,42 @@
+import { useGSAP } from "@gsap/react";
+import { TextPlugin } from "gsap/all";
+import gsap from "gsap";
+
 const GsapText = () => {
   // TODO: Implement gsap text animation
+  gsap.registerPlugin(TextPlugin);
+  useGSAP(()=>{
+    gsap.to("#text",{
+      opacity:1,
+      text: {
+        value: "Zunnaiyyer",
+        padSpace:true,
+        preserveSpaces: true,
+        rtl:true,
+        speed:0.5,
+        type: "diff"
+      },
+      yoyo:true,
+      ease: "expo",
+      repeat:-1,
+      repeatDelay:2
+    })    
+
+    gsap.fromTo(".para",{
+      opacity:0,
+      y:10
+    },{
+      opacity:1,
+      y:0,
+      stagger:0.1
+    })
+  })
+  
 
   return (
     <main>
-      <h1 id="text" className="opacity-0 translate-y-10">
-        GsapText
+      <h1 id="text" className="">
+        Kasra
       </h1>
 
       <p className="mt-5 text-gray-500 para">
